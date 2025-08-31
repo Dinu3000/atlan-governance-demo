@@ -1,0 +1,1 @@
+id: P010\nname: "Mask PAN"\ndescription: "Mask PAN numbers for India compliance"\nowners: ["security@demo","data-owner@demo"]\nsubjects:\n  allow_roles: ['FINANCE']\n  deny_roles: ['*']\nconditions: {"region":"EU"}\nscope:\n  include: []\n  exclude: []\n  tags_any: ['PAN']\n  tags_all: ['PII']\nactions:\n  - type: MASK\n    columns: ['PAN']\n    masking: {"strategy": "pan_mask"}

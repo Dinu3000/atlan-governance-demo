@@ -1,0 +1,33 @@
+name: Governance Demo CI/CD
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with: python-version: '3.11'
+      - name: Install deps
+        run: pip install -r requirements.txt
+      - name: Generate artifacts
+        run: |
+          python codegen/generate_snowflake_sql.py --simulate
+          python codegen/generate_snowflake_sql.py
+          python codegen/drift_detect.py
+      - name: Copy to vercel public
+        run: |
+          mkdir -p vercel-app/public
+          cp outputs/* vercel-app/public/ || true
+          cp logs/audit.jsonl vercel-app/public/ || true
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with: node-version: '18'
+      - name: Deploy to Vercel
+        env: 
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          npm install -g vercel
+          cd vercel-app
+          npm install
+          vercel --prod --token=$VERCEL_TOKEN

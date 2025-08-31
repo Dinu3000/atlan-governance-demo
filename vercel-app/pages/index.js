@@ -1,0 +1,1 @@
+export default function Home(){ return (<main style={{fontFamily:'sans-serif',padding:24}}><h1>Atlan Governance Demo — Reports</h1><p>Copy outputs/* and logs/audit.jsonl to vercel-app/public/ before deploying.</p></main>) }

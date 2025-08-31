@@ -1,0 +1,100 @@
+{
+  "nodes": {
+    "model.demo.customers": {
+      "resource_type": "model",
+      "name": "customers",
+      "database": "DEMO_DB",
+      "schema": "PUBLIC",
+      "alias": "customers",
+      "tags": [
+        "PII"
+      ],
+      "columns": {
+        "CUSTOMER_ID": {
+          "name": "CUSTOMER_ID",
+          "tags": [
+            "JOIN_KEY"
+          ]
+        },
+        "EMAIL": {
+          "name": "EMAIL",
+          "tags": [
+            "PII",
+            "EMAIL"
+          ]
+        },
+        "PHONE": {
+          "name": "PHONE",
+          "tags": [
+            "PII",
+            "PHONE"
+          ]
+        },
+        "SSN": {
+          "name": "SSN",
+          "tags": [
+            "PII",
+            "SSN"
+          ]
+        },
+        "REGION": {
+          "name": "REGION",
+          "tags": [
+            "REGION"
+          ]
+        },
+        "ADDRESS": {
+          "name": "ADDRESS",
+          "tags": [
+            "PII",
+            "ADDRESS"
+          ]
+        }
+      },
+      "depends_on": {
+        "nodes": []
+      }
+    },
+    "model.demo.transactions": {
+      "resource_type": "model",
+      "name": "transactions",
+      "database": "DEMO_DB",
+      "schema": "PUBLIC",
+      "alias": "transactions",
+      "tags": [
+        "FINANCE"
+      ],
+      "columns": {
+        "TX_ID": {
+          "name": "TX_ID",
+          "tags": []
+        },
+        "CUSTOMER_ID": {
+          "name": "CUSTOMER_ID",
+          "tags": [
+            "JOIN_KEY"
+          ]
+        },
+        "CREDIT_CARD": {
+          "name": "CREDIT_CARD",
+          "tags": [
+            "PII",
+            "CREDITCARD"
+          ]
+        },
+        "AMOUNT": {
+          "name": "AMOUNT",
+          "tags": [
+            "FINANCE"
+          ]
+        }
+      },
+      "depends_on": {
+        "nodes": [
+          "model.demo.customers"
+        ]
+      }
+    }
+  },
+  "sources": {}
+}

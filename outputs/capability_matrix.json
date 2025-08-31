@@ -1,0 +1,12 @@
+{
+  "MASK": {
+    "Snowflake": "Masking Policy + ALTER TABLE SET MASKING POLICY",
+    "BigQuery": "Policy tag / masked view",
+    "Databricks": "Unity Catalog view-based mask"
+  },
+  "ROW_FILTER": {
+    "Snowflake": "Row Access Policy + ALTER TABLE ADD ROW ACCESS POLICY",
+    "BigQuery": "Row-level security (conceptual)",
+    "Databricks": "View-based filters (conceptual)"
+  }
+}

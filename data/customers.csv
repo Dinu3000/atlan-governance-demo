@@ -1,0 +1,3 @@
+CUSTOMER_ID,EMAIL,PHONE,SSN,REGION,ADDRESS
+1,alice@example.com,5551234567,111-22-3333,EU,"221B Baker St, London"
+2,bob@example.com,5559876543,222-33-4444,US,"742 Evergreen Terrace, Springfield"
